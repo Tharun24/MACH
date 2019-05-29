@@ -7,7 +7,6 @@ export PYTHONPATH=$(pwd)
 cd ../wiki10_31k/src
 
 #####  Build lookups for classes #####
-python3 preproc.py
 python3 build_index.py
 
 ##### Training multiple repetitions simulataneously #####

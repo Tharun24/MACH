@@ -92,6 +92,7 @@ def data_generator(files, batch_size, feature_dim, n_classes):
         lines = []
         for file in files:
             with open(file,'r',encoding='utf-8') as f:
+                header = f.readline()
                 while True:
                     temp = len(lines)
                     lines += list(islice(f,batch_size-temp))

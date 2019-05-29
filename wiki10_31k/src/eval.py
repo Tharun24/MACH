@@ -106,6 +106,7 @@ candidate_indices = np.ascontiguousarray(lookup[:,candidates])
 
 begin_time = time.time()
 with open('../data/test.txt','r',encoding='utf-8') as f:
+	header = f.readline()
     idxs = []
     vals = []
     labels = []
