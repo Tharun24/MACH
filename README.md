@@ -1,3 +1,5 @@
+## This repo will be updated soon with streamlined codes (modular structure, TFRecords and faster evaluation)
+
 ## Download links for datasets
 
 1) Extreme classification repository - http://manikvarma.org/downloads/XC/XMLRepository.html
