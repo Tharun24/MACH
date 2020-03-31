@@ -16,7 +16,7 @@ If you find our approach interesting, please cite our paper with the following b
 # Download links for datasets
 Most of the public datasets that we use are available on [Extreme Classification Repository (XML Repo)](http://manikvarma.org/downloads/XC/XMLRepository.html). Specific links are as follows:
 
-1. [Amazon-670K] (https://drive.google.com/file/d/1TLaXCNB_IDtLhk4ycOnyud0PswWAW6hR/view) - [Kaggle Link](https://www.kaggle.com/c/extreme-classification-amazon) 
+1. [Amazon-670K] (https://drive.google.com/file/d/1TLaXCNB_IDtLhk4ycOnyud0PswWAW6hR/view) / [Kaggle Link](https://www.kaggle.com/c/extreme-classification-amazon) 
 2. [Delicious-200K] (https://drive.google.com/file/d/0B3lPMIHmG6vGR3lBWWYyVlhDLWM/view)
 3. [Wiki10-31K] (http://manikvarma.org/downloads/XC/XMLRepository.html) 
 
@@ -32,7 +32,7 @@ Yet again, the data format must be changed to match the datasets on Extreme Clas
 
 ## requirements
 You are expected to have TensorFlow 1.x installed (1.8 - 1.14 should work) and have atleast 2 GPUs with 32GB memory (or 4 GPUs with 16 GB memory). We will add support for TensorFlow 2.x in subsequent versions. 
-*Cython* is also required for importing a C++ function *gather_batch* during evaluation (if you cannot use C++ for any reason, please refer to the **C++ vs Python for evaluation** section below).
+*Cython* is also required for importing a C++ function *gather_batch* during evaluation (if you cannot use C++ for any reason, please refer to the **Cython vs Python for evaluation** section below).
 *sklearn* is required for importing *murmurhash3_32* (from sklearn.utils). Although the version requirements for *cython* and *sklearn* are non that stringent as Tensorflow, 
 use Cython-0.29.14 and sklearn-0.22.2 in case you run into any issues.
 
