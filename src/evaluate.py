@@ -96,7 +96,7 @@ for r in range(config.R):
         b2[r] = tf.constant(b2_tmp[r])
         ######
         logits[r] = tf.matmul(hidden_layer[r],W2[r])+b2[r]
-        # probs[r] = tf.sigmoid(logits[r])
+        probs[r] = tf.sigmoid(logits[r])
 
 
 tf_config = tf.ConfigProto()
