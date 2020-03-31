@@ -91,7 +91,7 @@ the initialization. It only measures the proper evaluation time.
 
 # Some finer details
 
-## Cython vs Python for evaluation (batch size effect)
+## Cython vs Python for evaluation
 The code evaluate.py imports a cython function *gather_batch* to reconstruct the scores for all classes from the predicted count-min sketch logits. It also gets the top-5 predictions based on these gathered scores 
 using a priority queue implementation. We use simple *#pragma omp* parallelization across a batch of inputs.
 
@@ -126,6 +126,8 @@ You should then be able to run
 ```
 python3 evaluate.py
 ```
+
+**Note:** pragma omp parallel doesn't allow huge matrices to be passed on. Hence adjust the *batch_size* in *eval_config* so that *batch_size*n_classes < 3 billion*.
 
 ## tf.constant vs tf.Variable
 In *evaluate.py*, the network initialization uses *tf.constant()* when loading saved weights instead of *tf.Variable()* as we do not have to train the weights again (it might be slightly faster too). 
