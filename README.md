@@ -127,7 +127,7 @@ You should then be able to run
 python3 evaluate.py
 ```
 
-**Note:** pragma omp parallel doesn't allow huge matrices to be passed on. Hence adjust the *batch_size* in *eval_config* so that *batch_size*n_classes < 3 billion*.
+**Note:** pragma omp parallel doesn't allow huge matrices to be passed on. Hence adjust the *batch_size* in *eval_config* so that _batch_size*n_classes < 3 billion_.
 
 ## tf.constant vs tf.Variable
 In *evaluate.py*, the network initialization uses *tf.constant()* when loading saved weights instead of *tf.Variable()* as we do not have to train the weights again (it might be slightly faster too). 
