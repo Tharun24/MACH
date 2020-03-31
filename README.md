@@ -1,6 +1,5 @@
 # Introduction
-This repository has the official code for the algorithm MACH discussed in the NeurIPS 2019 paper [Extreme Classification in Log-Memory using Count-Min Sketch]
-(https://papers.nips.cc/paper/9482-extreme-classification-in-log-memory-using-count-min-sketch-a-case-study-of-amazon-search-with-50m-products.pdf). 
+This repository has the official code for the algorithm MACH discussed in the NeurIPS 2019 paper [Extreme Classification in Log-Memory using Count-Min Sketch](https://papers.nips.cc/paper/9482-extreme-classification-in-log-memory-using-count-min-sketch-a-case-study-of-amazon-search-with-50m-products.pdf). 
 MACH proposes a novel zero-communication distributed training method for Extreme Classification (classification with millions of classes). We project the huge output 
 vector with millions of dimensions to a small dimensional count-min sketch (CMS) matrix. We then train indpenedent networks to predict each column of this CMS matrix 
 instead of the hige label vector.
