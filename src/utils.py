@@ -75,11 +75,3 @@ def _parse_function(example_proto): # for reading TFRecords
     parsed_features = tf.parse_single_example(example_proto, features)
     return parsed_features["labels"], parsed_features["label_vals"], parsed_features["input_idxs"], parsed_features["input_vals"]
 
-def _parse_function_eval(example_proto): # for reading TFRecords
-    features = {"labels": tf.VarLenFeature(tf.int64),
-              "label_vals": tf.VarLenFeature(tf.float32),
-              "input_idxs": tf.VarLenFeature(tf.int64),
-              "input_vals": tf.VarLenFeature(tf.float32)
-              }
-    parsed_features = tf.parse_single_example(example_proto, features)
-    return parsed_features["labels"], parsed_features["label_vals"], parsed_features["input_idxs"], parsed_features["input_vals"]
