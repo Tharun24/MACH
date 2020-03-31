@@ -19,16 +19,16 @@ If you find our approach interesting, please cite our paper with the following b
 # Download links for datasets
 Most of the public datasets that we use are available on [Extreme Classification Repository (XML Repo)](http://manikvarma.org/downloads/XC/XMLRepository.html). Specific links are as follows:
 
-1. [Amazon-670K] (https://drive.google.com/file/d/1TLaXCNB_IDtLhk4ycOnyud0PswWAW6hR/view) / [Kaggle Link](https://www.kaggle.com/c/extreme-classification-amazon) 
-2. [Delicious-200K] (https://drive.google.com/file/d/0B3lPMIHmG6vGR3lBWWYyVlhDLWM/view)
-3. [Wiki10-31K] (http://manikvarma.org/downloads/XC/XMLRepository.html) 
+1. [Amazon-670K](https://drive.google.com/file/d/1TLaXCNB_IDtLhk4ycOnyud0PswWAW6hR/view) / [Kaggle Link](https://www.kaggle.com/c/extreme-classification-amazon) 
+2. [Delicious-200K](https://drive.google.com/file/d/0B3lPMIHmG6vGR3lBWWYyVlhDLWM/view)
+3. [Wiki10-31K](http://manikvarma.org/downloads/XC/XMLRepository.html) 
 
 After downloading any of the XML repo datasets, please unzip them and move the train and test files to any folder(s) of your choice. Update *train_data_loc* and *eval_data_loc* in *config.py*.
 
-4. ODP dataset: [Train] (http://hunch.net/~vw/odp_train.vw.gz) / [Test] (http://hunch.net/~vw/odp_test.vw.gz) . 
+4. ODP dataset: [Train](http://hunch.net/~vw/odp_train.vw.gz) / [Test](http://hunch.net/~vw/odp_test.vw.gz) . 
 The data format must be changed to match the datasets on Extreme Classification repo.
 
-5. Fine-grained ImageNet-22K dataset: [Train] (http://hunch.net/~jl/datasets/imagenet/training.txt.gz) / [Test](http://hunch.net/~jl/datasets/imagenet/testing.txt.gz) .
+5. Fine-grained ImageNet-22K dataset: [Train](http://hunch.net/~jl/datasets/imagenet/training.txt.gz) / [Test](http://hunch.net/~jl/datasets/imagenet/testing.txt.gz) .
 Yet again, the data format must be changed to match the datasets on Extreme Classification repo.
 
 # Running MACH
