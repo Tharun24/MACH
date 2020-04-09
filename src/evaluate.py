@@ -62,7 +62,7 @@ eval_files = glob.glob(config.tfrecord_loc+'*_test.tfrecords')
 dataset = tf.data.TFRecordDataset(eval_files)
 dataset = dataset.apply(tf.contrib.data.map_and_batch(
     map_func=_parse_function, batch_size=config.batch_size, num_parallel_calls=4))
-dataset = dataset.prefetch(buffer_size=10)
+# dataset = dataset.prefetch(buffer_size=10)
 iterator = dataset.make_initializable_iterator()
 next_y_idxs, next_y_vals, next_x_idxs, next_x_vals = iterator.get_next()
 x = [tf.SparseTensor(tf.stack([next_x_idxs.indices[:,0], tf.gather(query_lookup[r], next_x_idxs.values)], axis=-1),

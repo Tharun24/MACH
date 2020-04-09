@@ -24,19 +24,19 @@ void cgather_batch(float* raw, long* lookup, float* result, long* top_preds, int
             }
         }
         // filling the queue
-        for(long i = scores_offset; i < scores_offset+N; ++i)
+        for(int i = 0; i < N; ++i)
         {
             if(q[idx].size()<5)
-                q[idx].push(pair<float, long>(-result[i], i));
-            else if(q[idx].top().first > -result[i]){
+                q[idx].push(pair<float, long>(-result[scores_offset + i], i));
+            else if(q[idx].top().first > -result[scores_offset + i]){
                 q[idx].pop();
-                q[idx].push(pair<float, long>(-result[i], i));
+                q[idx].push(pair<float, long>(-result[scores_offset + i], i));
             }    
         }
         // getting the top 5 classes
-        for(long i = preds_offset; i < preds_offset+5; ++i)
+        for(long i = 4; i >=0 ; --i)
         {
-            top_preds[i] = q[idx].top().second;
+            top_preds[preds_offset + i] = q[idx].top().second;
             q[idx].pop();
         }
     }
@@ -61,19 +61,19 @@ void cgather_K(float* raw, long* lookup, float* result, long* top_preds, int R, 
             }
         }
         // filling the queue
-        for(long i = scores_offset; i < scores_offset+N; ++i)
+        for(long i = 0; i < N; ++i)
         {
             if(q[idx].size()<5)
-                q[idx].push(pair<float, long>(-result[i], i));
-            else if(q[idx].top().first > -result[i]){
+                q[idx].push(pair<float, long>(-result[scores_offset + i], i));
+            else if(q[idx].top().first > -result[scores_offset + i]){
                 q[idx].pop();
-                q[idx].push(pair<float, long>(-result[i], i));
+                q[idx].push(pair<float, long>(-result[scores_offset + i], i));
             }    
         }
         // getting the top 5 classes
-        for(long i = preds_offset; i < preds_offset+5; ++i)
+        for(long i = 4; i >= 0; --i)
         {
-            top_preds[i] = q[idx].top().second;
+            top_preds[preds_offset + i] = q[idx].top().second;
             q[idx].pop();
         }
     }
