@@ -81,10 +81,10 @@ if config.load_epoch==0:
 else:
     sess.run(tf.global_variables_initializer(),
         feed_dict = {
-            W1_tmp:params['weights_1'],
-            b1_tmp:params['bias_1'],
-            W2_tmp:params['weights_2'],
-            b2_tmp:params['bias_2']})
+            W1_tmp:params['W1'],
+            b1_tmp:params['b1'],
+            W2_tmp:params['W2'],
+            b2_tmp:params['b2']})
     del params
 
 begin_time = time.time()

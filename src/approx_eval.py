@@ -68,12 +68,12 @@ for r in range(config.R):
         # W2[r] = tf.Variable(tf.truncated_normal([config.hidden_dim, config.B], stddev=0.05, dtype=tf.float32))
         # b2[r] = tf.Variable(tf.truncated_normal([config.B], stddev=0.05, dtype=tf.float32))
         ######
-        W1[r] = tf.Variable(W1_tmp[r])
-        b1[r] = tf.Variable(b1_tmp[r])
+        W1[r] = tf.constant(W1_tmp[r])
+        b1[r] = tf.constant(b1_tmp[r])
         hidden_layer[r] = tf.nn.relu(tf.sparse_tensor_dense_matmul(x[r],W1[r])+b1[r])
         #
-        W2[r] = tf.Variable(W2_tmp[r])
-        b2[r] = tf.Variable(b2_tmp[r])
+        W2[r] = tf.constant(W2_tmp[r])
+        b2[r] = tf.constant(b2_tmp[r])
         ######
         logits[r] = tf.matmul(hidden_layer[r],W2[r])+b2[r]
         # probs[r] = tf.sigmoid(logits[r])
