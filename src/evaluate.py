@@ -29,7 +29,7 @@ inv_lookup = np.zeros([config.R,config.n_classes]).astype(int)
 counts = np.zeros([config.R,config.B+1]).astype(int)
 for r in range(config.R):
     lookup[r] = np.load(config.lookups_loc+'bucket_order_'+str(r)+'.npy')[:N]
-    inv_lookup[r] = np.load(config.lookups_loc+'class_order'+str(r)+'.npy')[:N] 
+    inv_lookup[r] = np.load(config.lookups_loc+'class_order_'+str(r)+'.npy')[:N] 
     counts[r] = np.load(config.lookups_loc+'counts_'+str(r)+'.npy')[:config.B+1] 
 
 query_lookup = np.empty([config.R, config.feat_dim_orig], dtype=int)

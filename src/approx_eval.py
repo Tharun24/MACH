@@ -21,7 +21,7 @@ inv_lookup = np.zeros([config.R,config.n_classes]).astype(int)
 counts = np.zeros([config.R,config.B+1]).astype(int)
 for r in range(config.R):
     lookup[r] = np.load(config.lookups_loc+'bucket_order_'+str(r)+'.npy')[:N]
-    inv_lookup[r] = np.load(config.lookups_loc+'class_order'+str(r)+'.npy')[:N] 
+    inv_lookup[r] = np.load(config.lookups_loc+'class_order_'+str(r)+'.npy')[:N] 
     counts[r] = np.load(config.lookups_loc+'counts_'+str(r)+'.npy')[:config.B+1] 
 
 query_lookup = np.empty([config.R, config.feat_dim_orig], dtype=int)
@@ -90,7 +90,13 @@ n_check = 1000
 count = 0
 score_sum = [0.0,0.0,0.0]
 
+##### Run Graph Optimizer on first batch (might take ~50s) ####
 sess.run(iterator.initializer)
+top_buckets_, y_idxs = sess.run([top_buckets, next_y_idxs])
+
+###### Re-initialize the data loader ####
+sess.run(iterator.initializer)
+
 
 def process_scores(inp):
     R = inp.shape[0]
@@ -150,11 +156,11 @@ with open(config.logfile, 'a', encoding='utf-8') as fw:
                 #### P@5
                 score_sum[2] += len(np.intersect1d(preds[i],true_labels))/min(len(true_labels),5)
                 count += 1
-                if count%n_check==0:
-                    print('P@1 for',count,'points:',score_sum[0]/count, file=fw)
-                    print('P@3 for',count,'points:',score_sum[1]/count, file=fw)
-                    print('P@5 for',count,'points:',score_sum[2]/count, file=fw)
-                    print('time_elapsed: ',time.time()-begin_time, file=fw)
+            if count%n_check==0:
+                print('P@1 for',count,'points:',score_sum[0]/count, file=fw)
+                print('P@3 for',count,'points:',score_sum[1]/count, file=fw)
+                print('P@5 for',count,'points:',score_sum[2]/count, file=fw)
+                print('time_elapsed: ',time.time()-begin_time, file=fw)
         except tf.errors.OutOfRangeError:
             print('overall P@1 for',count,'points:',score_sum[0]/count, file=fw)
             print('overall P@3 for',count,'points:',score_sum[1]/count, file=fw)

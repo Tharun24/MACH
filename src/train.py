@@ -88,6 +88,7 @@ else:
     del params
 
 begin_time = time.time()
+total_time = 0
 logging.basicConfig(filename = config.logfile+'logs_'+str(r), level=logging.INFO)
 n_check=100
 
@@ -100,14 +101,17 @@ for curr_epoch in range(config.load_epoch+1,config.load_epoch+config.n_epochs+1)
             count += 1
             if count%n_check==0:
                 _, train_loss = sess.run([train_op, loss])
-                logging.info('finished '+str(count)+' steps. Time elapsed for last '+str(n_check)+' steps: '+str(time.time()-begin_time)+' s')
-                begin_time = time.time()
+                time_diff = time.time()-begin_time
+                total_time += time_diff
+                logging.info('finished '+str(count)+' steps. Time elapsed for last '+str(n_check)+' steps: '+str(time_diff)+' s')
                 logging.info('train_loss: '+str(train_loss))
+                begin_time = time.time()
                 count+=1
         except tf.errors.OutOfRangeError:
             break
     logging.info('###################################')
     logging.info('finished epoch '+str(curr_epoch))
+    logging.info('total time elapsed so far: '+str(total_time))
     logging.info('###################################')
     if curr_epoch%5==0:
         params = sess.run([W1,b1,W2,b2])
@@ -117,4 +121,5 @@ for curr_epoch in range(config.load_epoch+1,config.load_epoch+config.n_epochs+1)
             W2=params[2], 
             b2=params[3])
         del params
+        begin_time = time.time()
 
