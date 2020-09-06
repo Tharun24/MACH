@@ -140,14 +140,14 @@ with open(config.logfile, 'a', encoding='utf-8') as fw:
             logits_ = np.array(logits_)
             logits_ = np.transpose(logits_, (1,0,2))
             logits_ = np.ascontiguousarray(logits_)
+            curr_batch_size = y_idxs[2][0]
             ## C++ gather function (faster)
-            scores = np.zeros([config.batch_size, N], dtype=np.float32)
-            top_preds = np.zeros([config.batch_size, 5], dtype=np.int64)
-            gather_batch(logits_, lookup, scores, top_preds, config.R, config.B, N, config.batch_size, config.n_cores)
+            scores = np.zeros([curr_batch_size, N], dtype=np.float32)
+            top_preds = np.zeros([curr_batch_size, 5], dtype=np.int64)
+            gather_batch(logits_, lookup, scores, top_preds, config.R, config.B, N, curr_batch_size, config.n_cores)
             ## python multiprocessing (~5x slower than C++ gather)
             # top_preds = p.map(process_logits, logits_)
             ## get true labels
-            curr_batch_size = y_idxs[2][0]
             labels = [[] for i in range(curr_batch_size)]
             for j in range(len(y_idxs[0])):
                 labels[y_idxs[0][j,0]].append(y_idxs[1][j])

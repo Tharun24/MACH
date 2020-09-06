@@ -31,7 +31,7 @@ class eval_config:
     n_classes = 2812281
     ###
     B = 10000
-    R = 4
+    R = 16
     eval_epoch = 10
     R_per_gpu = 4
     num_gpus = 4 # R/R_per_gpu gpus
